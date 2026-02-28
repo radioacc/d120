@@ -1,0 +1,238 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem;
+}
+
+.bgGlow {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(100,80,180,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(40,120,90,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.3em;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(232,220,200,0.35);
+  letter-spacing: 0.18em;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── DICE WRAP ── */
+.diceWrap {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.2rem;
+}
+
+.diceNumber {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 3rem;
+  color: var(--gold-light);
+  text-shadow:
+    0 0 12px rgba(201,168,76,1),
+    0 0 30px rgba(201,168,76,0.6),
+    0 2px 6px rgba(0,0,0,0.9);
+  pointer-events: none;
+  letter-spacing: -0.02em;
+  transition: opacity 0.3s;
+  /* Slightly offset so it sits near center of sphere visually */
+  padding-bottom: 8px;
+}
+
+/* ── RESULT ── */
+.resultArea {
+  height: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.resultLabel {
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  color: rgba(232,220,200,0.38);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.resultLabel.show { opacity: 1; }
+
+.resultName {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(1.3rem, 4vw, 1.9rem);
+  text-align: center;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.resultName.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: glowPulse 1.5s ease-in-out 2;
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: brightness(1); }
+  50%       { filter: brightness(1.55); }
+}
+
+.resultRange {
+  font-size: 0.76rem;
+  color: var(--gold);
+  opacity: 0;
+  margin-top: 0.3rem;
+  letter-spacing: 0.1em;
+  transition: opacity 0.5s 0.2s;
+}
+
+.resultRange.show { opacity: 0.6; }
+
+/* ── LEGEND ── */
+.legend {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  opacity: 0.35;
+  transition: opacity 0.35s;
+}
+
+.legendItem.active { opacity: 1; }
+
+.legendDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── BUTTONS ── */
+.btnRow {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.rollBtn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  padding: 0.85em 2.4em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s, box-shadow 0.3s;
+  text-transform: uppercase;
+}
+
+.rollBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-101%);
+  transition: transform 0.3s ease;
+}
+
+.rollBtn:hover::before { transform: translateX(0); }
+.rollBtn:hover { color: var(--deep); box-shadow: 0 0 30px rgba(201,168,76,0.3); }
+.rollBtn span { position: relative; z-index: 1; }
+.rollBtn:disabled { opacity: 0.3; cursor: not-allowed; }
+.rollBtn:disabled::before { display: none; }
+
+.editBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: rgba(201,168,76,0.5);
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  padding: 0.8em 1.4em;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.editBtn:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ── PARTICLES ── */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: particleFly 1s ease-out forwards;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes particleFly {
+  0%   { opacity: 1; transform: translate(-50%, -50%) translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(0); }
+}

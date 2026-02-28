@@ -1,0 +1,253 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 10, 0.78);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  padding: 2.2rem 2.4rem 2rem;
+  width: min(520px, 92vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 80px rgba(0,0,0,0.9), inset 0 0 60px rgba(201,168,76,0.02);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.cornerTL, .cornerBR {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: 0.4;
+}
+
+.cornerTL { top: 10px;    left: 10px;  border-width: 1px 0 0 1px; }
+.cornerBR { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
+
+.panelTitle {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.panelSub {
+  font-style: italic;
+  font-size: 0.82rem;
+  color: rgba(232,220,200,0.35);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.8rem;
+}
+
+/* Count row */
+.countRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.countLabel {
+  flex: 1;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: rgba(232,220,200,0.5);
+  letter-spacing: 0.1em;
+}
+
+.countControls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.countBtn {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: 'Cinzel Decorative', cursive;
+  line-height: 1;
+}
+
+.countBtn:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+
+.countBtn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+.countVal {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  min-width: 24px;
+  text-align: center;
+}
+
+/* List */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.8rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: rowIn 0.22s ease forwards;
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.rowNum {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.68rem;
+  color: rgba(201,168,76,0.4);
+  min-width: 16px;
+  text-align: right;
+}
+
+.swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.swatch:hover { transform: scale(1.15); }
+
+.colorInput {
+  position: absolute;
+  inset: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.nameInput {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: none;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  color: #e8dcc8;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  padding: 0.4em 0.5em;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.nameInput:focus {
+  border-bottom-color: var(--gold);
+  background: rgba(201,168,76,0.04);
+}
+
+.badge {
+  font-size: 0.7rem;
+  color: rgba(201,168,76,0.45);
+  letter-spacing: 0.05em;
+  min-width: 58px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.cancelBtn {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.7em 1.4em;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: rgba(232,220,200,0.45);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.cancelBtn:hover {
+  color: #e8dcc8;
+  border-color: rgba(232,220,200,0.35);
+}
+
+.saveBtn {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.7em 1.8em;
+  cursor: pointer;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.25s;
+}
+
+.saveBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-101%);
+  transition: transform 0.25s ease;
+}
+
+.saveBtn:hover::before { transform: translateX(0); }
+.saveBtn:hover { color: var(--deep); }
+.saveBtn span { position: relative; z-index: 1; }
