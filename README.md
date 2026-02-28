@@ -2,7 +2,7 @@
 
 A photorealistic 3D dice roller built with React and Three.js. Roll a D120 to let fate decide between your choices.
 
-**[Live Demo →](https://d12.adamcaskey.com)**
+**[Live Demo →](https://d120.adamcaskey.com)**
 
 ---
 
