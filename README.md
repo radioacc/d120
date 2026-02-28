@@ -6,6 +6,16 @@ A photorealistic 3D dice roller built with React and Three.js. Roll a D120 to le
 
 ---
 
+## Why even do this?
+
+Mostly a personal project to learn more about modern development tools — working with React and Three.js, pushing code to GitHub, and deploying to the Cloudflare CDN. AI tools helped with some of the core scripting and troubleshooting along the way, but the real value was getting hands-on across the whole stack and seeing it actually work in the end. A great learning opportunity from start to finish.
+
+## Why a D120??
+
+Why not!! 😄 It came about from trying to decide where to go to dinner — we were literally rolling an actual D120 to pick a restaurant, and from that moment the idea was born.
+
+---
+
 ## What It Does
 
 Spin a marble D120 die and let it randomly land on one of your configured choices. Originally built to decide between restaurants, but works for anything.
@@ -29,8 +39,8 @@ The die is rendered in WebGL — a real 3D sphere with procedurally generated ma
 ## Running Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/d120-decision-roller.git
-cd d120-decision-roller
+git clone https://github.com/radioacc/d120.git
+cd d120
 npm install
 npm run dev
 ```
